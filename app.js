@@ -18,12 +18,15 @@ function update_title() {
 window.addEventListener("hashchange", () => {
   let page = location.hash.substring(1) || "login"; 
   showpage(page);      
-  update_title();      
+  update_title(); 
+  updateRoleSections();     
 });
 
 let initialPage = location.hash.substring(1) || "login";
 showpage(initialPage);
 update_title();
+updateRoleSections();     
+
 
 update_title();
 // Security 
@@ -62,6 +65,7 @@ function Login_check() {
       sessionStorage.setItem("isLoggedIn", "true");
       alert("Login successful! Welcome, " + found_user.role);
       window.location.hash = "dashboard";
+      updateRoleSections();
 
       document.querySelectorAll(".nav-links a").forEach(link => {
         link.style.pointerEvents = "auto";
@@ -75,7 +79,7 @@ function Login_check() {
   entered_password.value = "";
 }
 
-// navigatio block if not logged in
+// navigate block if not logged in
 function showpage(pageId) {
   let isLoggedIn = sessionStorage.getItem("isLoggedIn");
   if (isLoggedIn !== "true" && pageId !== "login") {
@@ -88,13 +92,16 @@ function showpage(pageId) {
 
 // role based page show
 
-document.addEventListener("DOMContentLoaded", () => { {
-    let role = sessionStorage.getItem("role");
+function updateRoleSections() {
+  let role = sessionStorage.getItem("role");
+
+  document.querySelectorAll(".Admin-section").forEach(el => el.style.display = "none");
+  document.querySelectorAll(".Manager-section").forEach(el => el.style.display = "none");
+
   if (role === "admin") {
-      document.querySelectorAll(".Admin-section").forEach(el => el.style.display = "block");
-  } 
-  else if (role === "manager") {
-      document.querySelectorAll(".Manager-section").forEach(el => el.style.display = "block");
+    document.querySelectorAll(".Admin-section").forEach(el => el.style.display = "block");
+  } else if (role === "manager") {
+    document.querySelectorAll(".Manager-section").forEach(el => el.style.display = "block");
   }
 }
-});
+updateRoleSections();
