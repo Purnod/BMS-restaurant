@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Abey's Kitchen Manager portal</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-links">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#finance">Finance</a>
+                <a href="#inventory">Inventory</a>
+                <a href="#orders">Orders</a>
+            </div>
+        </nav>
+        
+        <!-- Login page --> 
+        <div id="login" class="page">
+            <form onsubmit="Login_check()" action="">
+                <label for="username">Enter Your username </label>
+                <input type="text" id="username" required><br><br>
+
+                <label for="password">Enter Your password</label>
+                <input type="password" id="password" required><br><br>
+
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+        
+        <!-- Dashboard page --> 
+        <div id="dashboard" class="page">
+
+            <div class="Manager-section">
+                <h1>Manager Dashboard</h1>
+                
+                <div class="dashboard-cards">
+
+                    <div class="section">
+                        <h3> Sales (Today) test of git hub</h3> <!-- List the total amount -->
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>Profit (Today)</h3> <!-- List the total profit -->
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>Top 5 sellings (weekly)</h3> <!-- List top 5 names of the products with the number of sellings per week -->
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section"> <!-- List top 5 names of the products with the lowest stock -->
+                        <h3>Top 5 lowest stocks</h3>
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section"> <!-- List total number of orders completed today -->
+                        <h3>Completed Orders (Today)</h3>
+                        <p> No results to display</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="Admin-section">
+                <h1>Admin Dashboard</h1>
+
+                <div class="dashboard-cards"> 
+
+                    <div class="section"></div> <!-- List top 5 names of the products with the sale price -->
+                        <h3> Sales (Today) </h3>
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>Profit (Today)</h3> <!-- List top 5 names of the products with the finale profit -->
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section"></div> <!-- List top 5 names of the products with the fees of the used platforms (LKR 0 for direct orders) -->
+                        <h3> Fees (Today)</h3>
+                        <p> No results to display</p>
+                    </div>
+                
+                    <div class="section"> <!-- List top 5 names of the products with the lowest stock -->
+                        <h3>Top 5 lowest stocks</h3>
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section"> <!-- List total number of orders completed today -->
+                        <h3>Completed Orders (Today)</h3>
+                        <p> No results to display</p>
+                    </div>
+
+                    <div class="section"> <!-- financial breakdown of the month including total profit, loss, total expenses-->
+                        <h3> financial breakdown (Monthly)</h3>
+                        <p> No results to display</p>
+                    </div>
+                    
+                </div>
+
+            </div>
+        <div>
+        <!-- Finance page --> 
+
+        <div id="finance" class="page"> 
+            
+            <div class="Manager-section">
+                <h1>Manager Finance</h1>
+            </div>
+
+            <div class="Admin-section">
+                <h1>Admin Finance</h1>
+            </div>
+      
+        </div>
+        
+        <!-- Inventory page --> 
+        <div id="inventory" class="page">
+
+            <div class="Manager-section">
+            <h1>Manager Inventory</h1>
+            </div>
+
+            <div class="Admin-section">
+                <h1>Admin Inventory</h1>
+            </div>
+                
+        </div>
+        
+        <!-- Orders page --> 
+        <div id="orders" class="page">
+                
+            <div class="Manager-section">
+                <h1>Manager Orders</h1>
+            </div>
+
+            <div class="Admin-section">
+                <h1>Admin Orders</h1>
+            </div>
+
+        </div>
+        
+
+    </body>
+    <script src="app.js"></script>
+</html>
