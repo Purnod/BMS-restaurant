@@ -1,0 +1,40 @@
+{ "sales_table":[ 
+    {
+        "Product":"Fish Bun",
+        "Qty":"2",
+        "Unit_Price":"100",
+        "Total_Price":"",
+        "Unit_Profit":"50",
+        "Total_Profit":"", 
+        "Order_Platform":"Direct",
+        "Customer":"Charuka"
+    }
+],
+
+"platform_fees":[ 
+    {
+        "Platform":"Direct",
+        "Total_Sales":"1,000",
+        "Total_Fees":"0",
+        "Number_Of_Orders":"3"}
+],
+
+"expenses":[ 
+    {
+        "Expense":"Burger Buns",
+        "Date":"2024-10-01",
+        "Spend_Amount":"300"
+        
+    }
+],
+
+"financial_summary":[ 
+    {
+    "Product_Name": "Fish Bun",
+    "Qty_Sold": "5",
+    "Total_Profit": "0",
+    "Platform_Fees": "0"
+    }
+]
+
+}

@@ -3,6 +3,9 @@
 .Admin-section, .Manager-section{
     display: none;
 }
+
+/* Logout */
+
 /* Navigation bar */
 .page{
     display: none;
