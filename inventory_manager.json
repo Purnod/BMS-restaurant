@@ -1,0 +1,11 @@
+{ "Current_Stock_Table":[ 
+    {
+        "Product_Name":"Fish Bun",
+        "Current_Stock":"0",
+        "Reorder_Level":"10",
+        "Supplier":"Home Made",
+        "Date_of_Expiry":"2025-11-20"
+    }
+]
+
+}
