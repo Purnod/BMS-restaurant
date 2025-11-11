@@ -372,7 +372,7 @@ fetch('inventory_manager.json')
 
 
 
-
+// This is a test to check the sync
   //         let alertDiv = document.createElement('div');
   //         alertDiv.className = 'alert';
   //         alertDiv.innerHTML = `
