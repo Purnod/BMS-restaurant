@@ -5,6 +5,22 @@
         "Reorder_Level":"10",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"
+    },
+
+    {
+        "Product_Name":"Fish Patties",
+        "Current_Stock":"1006",
+        "Reorder_Level":"10",
+        "Supplier":"Home Made",
+        "Date_of_Expiry":"2025-11-20"
+    }, 
+
+        {
+        "Product_Name":"Fish rolls",
+        "Current_Stock":"100",
+        "Reorder_Level":"10",
+        "Supplier":"Home Made",
+        "Date_of_Expiry":"2025-11-20"
     }
 ]
 
