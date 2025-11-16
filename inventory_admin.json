@@ -1,24 +1,30 @@
-{ "Current_Stock_Table":[ 
+{ "Current_Stock_Table_admin":[ 
     {
         "Product_Name":"Fish Bun",
-        "Current_Stock":"15",
+        "Current_Stock":"10",
         "Reorder_Level":"10",
+        "Unit_Price":"2.50",
+        "total_amount":"37.50",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"
     },
 
     {
         "Product_Name":"Fish Patties",
-        "Current_Stock":"1006",
+        "Current_Stock":"0",
         "Reorder_Level":"10",
+        "Unit_Price":"2.50",
+        "total_amount":"37.50",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"
     }, 
 
         {
-        "Product_Name":"Fish rolls",
-        "Current_Stock":"100",
+        "Product_Name":"Fish Rolls",
+        "Current_Stock":"20",
         "Reorder_Level":"10",
+        "Unit_Price":"2.50",
+        "total_amount":"37.50",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"
     }

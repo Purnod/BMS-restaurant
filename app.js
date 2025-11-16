@@ -334,3 +334,64 @@ window.addEventListener("hashchange", () => {
     }
 });
         
+
+//admin Section 
+
+fetch ('inventory_admin.json')
+.then(response => response.json())
+.then(data => { console.log("admin table data loded.",data);
+                adminpopulateCurrentStockTable(data);
+                adminhandleLowStock(data);
+})
+.catch(error => console.error('Error loading inventory data:', error));
+
+// current stock table population for admin
+function adminpopulateCurrentStockTable(data) {
+
+    let tableBody = document.querySelector('.current_stock_table_admin tbody');
+    tableBody.innerHTML = '';
+
+    data.Current_Stock_Table_admin.forEach(item => { console.log("Current stock admin",item);
+        let row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.Product_Name}</td>
+            <td>${item.Current_Stock}</td>
+            <td>${item.Reorder_Level}</td>
+            <td>${item.Unit_Price}</td>
+            <td>${item.total_amount}</td>
+            <td>${item.Supplier}</td>
+            <td>${item.Date_of_Expiry}</td>
+        `;
+        tableBody.appendChild(row);
+        console.log("Row added to current stock admin table",row);
+    });
+}
+
+// low_stock_section for admin
+function adminhandleLowStock(data) {
+    let low_Stock_Container_admin = document.querySelector('.low_stock_products_admin');
+
+    // clear previous contents
+    low_Stock_Container_admin.innerHTML = '';
+    let stockList = data.Current_Stock_Table_admin || [];
+
+    stockList.forEach(item => {
+      console.log("Checking stock for admin item:", item);
+      // ensure numeric values
+      let current = Number(item.Current_Stock) || 0;
+      let reorder = Number(item.Reorder_Level) || 0;
+        if (current > reorder) {
+          return; // skip items that are above reorder level
+        } 
+        //  Low stock adding to the cards 
+        let div = document.createElement('div');
+        div.className = "low-stock-item-admin";
+        div.style.backgroundColor = (current === 0 || current <= reorder*0.5) ? '#ffcccc' : '#fff5b1';
+        div.innerHTML = `
+            <strong>${item.Product_Name}</strong>
+            <div>Current: ${current}</div>
+            <div>Reorder Level: ${reorder}</div>`;
+        low_Stock_Container_admin.appendChild(div);
+        console.log("Created admin cards count:", low_Stock_Container_admin.children.length);
+      });
+}
