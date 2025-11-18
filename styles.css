@@ -154,3 +154,44 @@ table, th, td {
     display: flex;
     gap: 20px;
 }
+
+.section_order_form{
+    background: white;
+    padding: 20px;
+    /* margin-bottom: 20px; */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* text-align: center; */
+    /* width: 100%; */
+    height: auto;
+    /* transition: 0.3s; */
+    cursor: pointer;
+}
+
+.orders_input{
+    display: grid;
+    grid-template-columns: auto 1fr; /* Auto for labels, 1fr for inputs */
+    gap: 10px; /* Space between rows and columns */
+    align-items: center; /* Vertically align items in their cells */
+}
+
+.order_summary_card{
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    width: 200px;
+    /* height: 150px; */
+    padding-left: 20px;
+    padding-bottom: 25px;
+}
+
+ .new_order_section{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+ } 
+
+ .order_summary_card div {
+    margin-bottom: 10px;     /* adjust as you like */
+}

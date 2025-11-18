@@ -33,7 +33,8 @@
     "Product_Name": "Fish Bun",
     "Qty_Sold": "5",
     "Total_Profit": "0",
-    "Platform_Fees": "0"
+    "Platform_Fees": "0",
+    "Platform":"Direct"
     }
 ]
 

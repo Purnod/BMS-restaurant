@@ -234,6 +234,7 @@
                             <th>Qty Sold</th>
                             <th>Total Profit (LKR)</th>
                             <th>Platform Fees (LKR)</th>
+                            <th>Platform</th>
                         </tr>
 
                         </thead>
@@ -323,6 +324,34 @@
 
             <div class="Admin-section">
                 <h1>Admin Orders</h1>
+
+                <div class="dashboard-cards">
+
+                    <div class="section_order_form">
+                        <h3 style="text-align: center;">Create an order: </h3>
+
+                        <form onsubmit="create_order()" action="">
+                            <label for="Product">Product: </label>
+                            <input type="text" id="Product" required class="orders_input"><br><br>
+
+                            <label for="Qty">Qty: </label>
+                            <input type="number" id="Qty" required class="orders_input"><br><br>
+
+                            <label for="Customer Name">Customer Name: </label>
+                            <input type="text" id="Customer_Name" required class="orders_input"><br><br>
+
+                            <label for="Time">Prep Time: </label>
+                            <input type="text" id="Time" required class="orders_input"><br><br>
+
+                            <button type="submit" style="display: block; margin: 0 auto;">Create order</button>
+                        </form>
+                    </div>
+                
+                </div> 
+                
+                <h3>New Orders</h3>
+                <div class="new_order_section"></div>
+                <p id="timer"></p>
             </div>
 
         </div>

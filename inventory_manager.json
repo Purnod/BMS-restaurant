@@ -1,7 +1,7 @@
 { "Current_Stock_Table":[ 
     {
         "Product_Name":"Fish Bun",
-        "Current_Stock":"15",
+        "Current_Stock":"100",
         "Reorder_Level":"10",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"
@@ -9,15 +9,23 @@
 
     {
         "Product_Name":"Fish Patties",
-        "Current_Stock":"1006",
+        "Current_Stock":"10",
         "Reorder_Level":"10",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"
     }, 
 
-        {
+    {
         "Product_Name":"Fish rolls",
-        "Current_Stock":"100",
+        "Current_Stock":"20",
+        "Reorder_Level":"10",
+        "Supplier":"Home Made",
+        "Date_of_Expiry":"2025-11-20"
+    },
+    
+    {
+        "Product_Name":"Mojito",
+        "Current_Stock":"0",
         "Reorder_Level":"10",
         "Supplier":"Home Made",
         "Date_of_Expiry":"2025-11-20"

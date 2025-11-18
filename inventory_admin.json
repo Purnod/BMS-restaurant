@@ -1,7 +1,7 @@
 { "Current_Stock_Table_admin":[ 
     {
         "Product_Name":"Fish Bun",
-        "Current_Stock":"10",
+        "Current_Stock":"0",
         "Reorder_Level":"10",
         "Unit_Price":"2.50",
         "total_amount":"37.50",

@@ -42,6 +42,7 @@ updateRoleSections();
 
 update_title();
 // Security 
+
 //login page 
 
 //navigation link disable if not logged in
@@ -243,6 +244,7 @@ fetch('finance_admin.json')
               <td>${finance.Qty_Sold}</td>
               <td>${finance.Total_Profit}</td>
               <td>${finance.Platform_Fees}</td>
+              <td>${finance.Platform}</td>
           `;
           finance_summary_admin.appendChild(row);
       });
@@ -309,6 +311,10 @@ function handleLowStock(data) {
           return; // skip items that are above reorder level
         }
 
+        else if (current < reorder){
+           out_Of_Stock_Products.push(item.Product_Name);
+        }
+
         //  Low stock adding to the cards 
         let div = document.createElement('div');
         div.className = "low-stock-item";
@@ -322,9 +328,9 @@ function handleLowStock(data) {
       });
 
             // ----- SHOW ALERT -----
-    //     if (out_Of_Stock_Products.length > 0 && (location.hash.substring(1) === "inventory")) {
-    //     alert(`The following products are out of stock:\n- ${out_Of_Stock_Products.join("\n- ")}`);
-    // }
+        if (out_Of_Stock_Products.length > 0 && (location.hash.substring(1) === "inventory") && sessionStorage.getItem("role") === "manager") {
+        alert(`The following products are out of stock:\n- ${out_Of_Stock_Products.join("\n- ")}`);
+    }
       
 }
 
@@ -359,8 +365,8 @@ function adminpopulateCurrentStockTable(data) {
             <td>${item.Reorder_Level}</td>
             <td>${item.Unit_Price}</td>
             <td>${item.total_amount}</td>
-            <td>${item.Supplier}</td>
             <td>${item.Date_of_Expiry}</td>
+            <td>${item.Supplier}</td>
         `;
         tableBody.appendChild(row);
         console.log("Row added to current stock admin table",row);
@@ -373,25 +379,128 @@ function adminhandleLowStock(data) {
 
     // clear previous contents
     low_Stock_Container_admin.innerHTML = '';
-    let stockList = data.Current_Stock_Table_admin || [];
 
-    stockList.forEach(item => {
+    let out_Of_Stock_Products_admin = [];
+
+    data.Current_Stock_Table_admin.forEach(item => {
       console.log("Checking stock for admin item:", item);
+
       // ensure numeric values
       let current = Number(item.Current_Stock) || 0;
       let reorder = Number(item.Reorder_Level) || 0;
+
         if (current > reorder) {
           return; // skip items that are above reorder level
         } 
+
+        else if (current < reorder){
+           out_Of_Stock_Products_admin.push(item.Product_Name);
+        }
+
         //  Low stock adding to the cards 
         let div = document.createElement('div');
         div.className = "low-stock-item-admin";
         div.style.backgroundColor = (current === 0 || current <= reorder*0.5) ? '#ffcccc' : '#fff5b1';
+
         div.innerHTML = `
             <strong>${item.Product_Name}</strong>
             <div>Current: ${current}</div>
             <div>Reorder Level: ${reorder}</div>`;
+
         low_Stock_Container_admin.appendChild(div);
+
         console.log("Created admin cards count:", low_Stock_Container_admin.children.length);
       });
+
+      // SHOW ALERT
+
+          if (out_Of_Stock_Products_admin.length > 0 && (location.hash.substring(1) === "inventory") && sessionStorage.getItem("role") === "admin") {
+          alert(`The following products are out of stock:\n- ${out_Of_Stock_Products_admin.join("\n- ")}`);
+      }
+      
 }
+
+window.addEventListener("hashchange", () => {
+    if (location.hash.substring(1) === "inventory" && inventoryData) {
+        adminhandleLowStock(data);
+    }
+});
+
+// Orders page logic
+create_order();
+function create_order() { console.log("Creating order summary...");
+
+  let new_order_section = document.querySelector('.new_order_section');
+
+  let productInput = document.getElementById('Product');
+  let qtyInput = document.getElementById('Qty');
+  let customerInput = document.getElementById('Customer_Name');
+  let timeInput = document.getElementById('Time');
+
+  let product_name = productInput.value;
+  let quantity = qtyInput.value;
+  let customer_name = customerInput.value;
+  let Time = timeInput.value;
+
+  //timer setup
+  let timer_value = document.getElementById('Time');  // input element
+  let prepTime = Number(timer_value.value);           // number
+  let display = document.getElementById('timer');   // timer box
+  
+  display.innerHTML = "";
+  
+  console.log("Preparation time:", prepTime);
+
+  // Create order summary card
+  let order = document.createElement('div');
+  order.className = 'order_summary_card';
+
+  function create_order_card(){
+      order.innerHTML = ` 
+      <h3>Order Summary</h3>
+      <div><strong>Product Name:</strong> ${product_name}</div>
+      <div><strong>Quantity:</strong> ${quantity}</div>
+      <div><strong>Customer Name:</strong> ${customer_name}</div>
+      <div><strong>Time:</strong> ${Time}</div>
+      <div><strong><span id="timer_display">${prepTime} seconds</span></strong></div>
+      `;
+  };
+  console.log("Order summary created:", order);
+
+  new_order_section.appendChild(order);
+
+  console.log("Created admin cards count:", new_order_section.children.length);
+
+  // Countdown function
+  function timer() {
+    display.innerHTML = prepTime;
+
+    if (prepTime <= 0) {
+      clearInterval(countdown);
+      alert("Order is ready for pickup!");
+      create_order_card();
+    } 
+    else {
+      prepTime--;
+      create_order_card();
+    }
+  }
+
+  // Start the timer every 1 second
+  let countdown = setInterval(timer, 1000);
+
+  timer(); // show first value immediately
+
+  // Clear inputs correctly
+  productInput.value = "";
+  qtyInput.value = "";
+  customerInput.value = "";
+  timeInput.value = "";
+}
+
+// TODOs:
+// loading bar which reacts to countdown timer, 
+// extra countdown display removal
+// implement for manager
+//custom loading pages, loading bars 
+//dark mode toggle
